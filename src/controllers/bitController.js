@@ -15,6 +15,7 @@ const crypto = async function (req, res) {
         let data = result.data
         let arrData = data.data
         let sortData = arrData.sort((a,b)=>b.changePercent24Hr-a.changePercent24Hr)
+        await bitModel.deleteMany()
         for(let i=0; i<sortData.length; i++){
             let obj ={}
             obj.symbol = sortData[i].symbol
